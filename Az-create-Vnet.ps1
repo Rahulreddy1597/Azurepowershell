@@ -6,9 +6,6 @@ Select-AzSubscription -Subscription "Rahul-subscription"
 $ResourcegroupName = "RG-PS-0814"
 $ResourcegroupLocation = "eastus"
 $VnetName = "Vnet-PS-1"
-$SubA = "SubnetA"
-$SubB = "SubnetB"
-
 
 ##Resource group Creation
 $RG = Get-AzResourceGroup -Name $ResourcegroupName -Location $ResourcegroupLocation -ErrorAction SilentlyContinue
@@ -28,14 +25,12 @@ Write-Host $RG.Location
 
 
 ##Creating Vnet
-
-$VnetName = "Vnet-PS-1"
-
 $Vnet = Get-AzVirtualNetwork -Name $VnetName -ResourceGroupName $RG.ResourceGroupName -ErrorAction SilentlyContinue
-
 if(!$Vnet){
 $Vnet = New-AzVirtualNetwork -Name $VnetName -ResourceGroupName $RG.ResourceGroupName -Location $RG.Location -AddressPrefix 10.0.0.0/27 
 Write-Host "VNET Created"
+Write-Host $Vnet.Name
+Write-Host $Vnet.Location
 }
 
 else{
