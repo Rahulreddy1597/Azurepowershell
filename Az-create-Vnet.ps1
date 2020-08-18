@@ -37,7 +37,7 @@ Write-Host $Vnet.Location
 }
 
 else{
-Write-Host "VNET already exists / Unable to create VNET"
+Write-Host "VNET already exists"
 }
 
 
